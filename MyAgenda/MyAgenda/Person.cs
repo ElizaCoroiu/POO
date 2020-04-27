@@ -12,9 +12,11 @@ namespace MyAgenda
         private string firstName;
         private string emailAdress;
         private string birthDate;
-        private string phoneNumber;
+        private int ID;
+        private Agenda agenda;
         private Calendar schedules;
 
+        public int getID { get => ID; }
         public Person()
         {
 

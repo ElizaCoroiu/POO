@@ -8,13 +8,17 @@ namespace MyAgenda
 {
     class Calendar
     {
-        private DateTime startTimeDate;
-        private DateTime endTimeDate;
-        private Activity activities;
+        private int year;
+        private string month;
+        private string startTime;
+        private string endTime;
 
-        public Calendar()
+        public Calendar(string[] data)
         {
-
+            this.month = data[0];
+            this.year = int.Parse(data[1]);
+            this.startTime = data[2];
+            this.endTime = data[3];
         }
     }
 }

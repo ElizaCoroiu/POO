@@ -1,0 +1,8 @@
+﻿Name                                , Type            , Description                    , Schedule                              , ID
+GoldArt                             , art             , paintings auction              , 30th July; 1900; 2:00 PM; 3:00 PM     , 01; 02; 03
+Annual Peinters Meeting             , art             , painters meeting               , 2nd August; 1900; 4:00 PM; 5:00 PM    , 01; 03 
+"War And Peace" Review Event        , literture       ,  book review                   , 10th June; 1870; 7:00 PM; 8:00 PM     , 04; 05; 06
+Barbeque Festival                   , leisure; food   , outdoor activity               , 24th September; 1860; 9:30 AM; 1:00 PM, 03; 04; 05   
+Journey to the Center of the Earth  , cinematography  , movie night                    , 28th November; 1850; 8:00 PM; 10:00 PM, 04; 05; 06
+Emperor Piano Concert               , music           , Beethoven's Piano Concert no. 5, 14th October; 1800; 6:00 PM; 8:00 PM  , 07; 08 
+European Chess Championship         , chess; games    , chess championship             , 30th July; 1900; 10:00 AM; 11:30 AM   , 01 
