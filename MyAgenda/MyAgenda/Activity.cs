@@ -11,21 +11,35 @@ namespace MyAgenda
         private string type;
         private string name;
         private string description;
-        private Calendar schedule;
-        private List<Person> participants;
+        private DateTime _startTime;
+        private DateTime _endTime;
+        private List<Person> _participants;
 
-        public Activity(string[] activity)
+        public List<Person> participants { get => _participants; }
+        public string Name { get => name; }
+        public DateTime startTime { get => _startTime; }
+        public DateTime endTime { get => _endTime; }
+
+        public Activity(string name, string type, string description, DateTime start, DateTime end, List<Person> participants)
         {
-            this.name = activity[0];
-            this.type = activity[1];
-            this.description = activity[2];
-            string[] data = activity[3].Split(';');
-            this.schedule = new Calendar(data);
+            this.type = type;
+            this.name = name;
+            this.description = description;
+            this._startTime = start;
+            this._endTime = end;
+            this._participants = participants;
         }
 
         public override string ToString()
         {
-            return $"Activity: {this.name}-{this.type}-{this.description}-{this.schedule}";
+            StringBuilder sb = new StringBuilder();
+            foreach (var p in participants)
+            {
+                sb.Append(p.Name + ", ");
+            }
+            return $"Activity name: {this.name}, type: {this.type}, description: {this.description}, " +
+                $"date: {this.startTime}-{this.endTime}\n"
+                + $"participants: {sb}";
         }
     }
 }

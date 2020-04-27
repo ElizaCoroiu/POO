@@ -20,5 +20,10 @@ namespace MyAgenda
             this.startTime = data[2];
             this.endTime = data[3];
         }
+
+        public override string ToString()
+        {
+            return $"Time and dates: {this.month}, {this.year}, {this.startTime}-{this.endTime}";
+        }
     }
 }
