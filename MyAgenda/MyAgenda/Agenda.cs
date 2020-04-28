@@ -41,5 +41,21 @@ namespace MyAgenda
 
             return activitiesDuringInterval;
         }
+
+        public bool GetIsFree(DateTime start, DateTime end)
+        {
+            bool isFree = true;
+
+            foreach (var activity in activities)
+            {
+                if (activity.startTime < end && start < activity.endTime)
+                {
+                    isFree = false;
+                    break;
+                }
+            }
+
+            return isFree;
+        }
     }
 }

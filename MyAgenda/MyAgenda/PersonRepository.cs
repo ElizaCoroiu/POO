@@ -64,6 +64,18 @@ namespace MyAgenda
             return null;
         }
 
+        public List<int> GetAllIds()
+        {
+            List<int> allIds = new List<int>();
+
+            foreach (var p in allPersons)
+            {
+                allIds.Add(p.getID());
+            }
+
+            return allIds;
+        }
+
         public List<Agenda> CreateAgendas()
         {
             List<Agenda> agendaList = new List<Agenda>();
