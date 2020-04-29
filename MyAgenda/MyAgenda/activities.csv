@@ -1,4 +1,4 @@
-﻿Name                                , Type            , Description                    , StartTime          , EndTime            ,                              , ID
+﻿Name                                , Type            , Description                    , StartTime          , EndTime            , ID                            
 GoldArt                             , art             , paintings auction              , 1900-07-30T14:00:00, 1900-07-30T15:00:00, 01; 02; 03
 Annual Painters Meeting             , art             , painters meeting               , 1900-08-02T16:00:00, 1900-08-02T17:00:00, 01; 03
 Annual Painters Meeting             , art             , painters meeting               , 1901-07-30T13:00:00, 1900-07-30T16:00:00, 01; 03 
