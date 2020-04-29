@@ -46,7 +46,6 @@
     <Compile Include="Activity.cs" />
     <Compile Include="ActivityRepository.cs" />
     <Compile Include="Agenda.cs" />
-    <Compile Include="Calendar.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonRepository.cs" />
     <Compile Include="Program.cs" />
