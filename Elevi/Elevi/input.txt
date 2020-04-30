@@ -1,0 +1,7 @@
+﻿Popescu, Mircea, 5,10 8 8 6 8
+Dumitrescu, Radu, 5,5 7 8 10 6
+Antonescu, Maria, 5,6 7 8 9 10
+Rusu, Andrei, 3,7 8 8
+Ionescu, Serban,4,9 10 10 8
+Stan, Rebeca, 3,8 8 9
+Constantin, Bianca,4,8 10 9 9
