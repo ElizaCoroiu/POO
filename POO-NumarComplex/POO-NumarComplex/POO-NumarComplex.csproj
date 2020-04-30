@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Complex.cs" />
+    <Compile Include="ComplexD.cs" />
     <Compile Include="DenominatorIsZero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -23,19 +23,19 @@ namespace POO_NumarComplex
 
             Console.WriteLine("Adunare: ");
             Complex z5;
-            z5 = z3.Add(z4);
+            z5 = z3 + z4;
             z5.Print();
             Console.WriteLine();
 
             Console.WriteLine("Scădere: ");
             Complex z6;
-            z6 = z4.Subtract(z2);
+            z6 = z4 - z2;
             z6.Print();
             Console.WriteLine();
 
             Console.WriteLine("Inmulțire: ");
             Complex z7;
-            z7 = z3.Multiply(z4);
+            z7 = z3 * z4;
             z7.Print();
             Console.WriteLine();
 
@@ -47,15 +47,24 @@ namespace POO_NumarComplex
 
             Console.WriteLine("Forma trigonometrică și ridicarea la putere: ");
             z3.GetTrigonometricFormAndPow(3);
-           
+            Console.WriteLine();
+
+            ComplexD z9 = new ComplexD(-1, 1);
+            z9.GetTrigonometricFormAndPow(2);
+            Console.WriteLine();
+
+            List<Complex> points = new List<Complex>() { new Complex(1,1), new Complex(5, 4), new Complex(2, 3)};
+            ComplexD z = new ComplexD(8, 1);
+            double distance = z.GetDistance(points);
+            Console.WriteLine($"The distance from point {z} to the given list of points is: {distance}");
         
+            Console.ReadKey();
+        }
+    }
+}
 
             
            
-            Console.ReadKey();
-        }
 
            
 
-    }
-}
