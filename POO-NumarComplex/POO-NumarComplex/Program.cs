@@ -49,8 +49,10 @@ namespace POO_NumarComplex
             z3.GetTrigonometricFormAndPow(3);
             Console.WriteLine();
 
-            ComplexD z9 = new ComplexD(-1, 1);
-            z9.GetTrigonometricFormAndPow(2);
+            Console.WriteLine("Ridicare la putere in clasa derivata: ");
+            ComplexD z9 = new ComplexD(1, 1);
+            Complex z10= z9.Pow(2);
+            z10.Print();
             Console.WriteLine();
 
             List<Complex> points = new List<Complex>() { new Complex(1,1), new Complex(5, 4), new Complex(2, 3)};

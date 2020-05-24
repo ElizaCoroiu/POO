@@ -23,6 +23,22 @@ namespace POO_NumarComplex
             this.imaginar = imaginar;
         }
 
+        public double r { get => Math.Sqrt(Math.Pow(this.real, 2) + Math.Pow(this.imaginar, 2)); }
+        public double argz
+        {
+            get
+            {
+                try
+                {
+                    return Math.Atan(this.imaginar / this.real);
+                }
+                catch (Exception)
+                {
+                    throw new DenominatorIsZero(this.real);
+                }
+            }
+        }
+
         public void Print()
         {
             if (real == 0 && imaginar == 0)
@@ -43,7 +59,7 @@ namespace POO_NumarComplex
             }
         }
 
-        public Complex Pow(int n)
+        public virtual Complex Pow(int n)
         {
             Complex z = new Complex(this.real, this.imaginar);
             Complex result = new Complex();
@@ -69,7 +85,7 @@ namespace POO_NumarComplex
             }
         }
 
-        public virtual void GetTrigonometricFormAndPow(double n)
+        public void GetTrigonometricFormAndPow(double n)
         {
 
             double r = Math.Sqrt(Math.Pow(this.real, 2) + Math.Pow(this.imaginar, 2));

@@ -12,9 +12,16 @@ namespace POO_NumarComplex
         {
         }
 
-        public override void GetTrigonometricFormAndPow(double n)
+   
+        public override Complex Pow(int n)
         {
-            base.GetTrigonometricFormAndPow(n);
+            double r = Math.Pow(this.r, n);
+            double argz = this.argz * n;
+
+            double real = r * Math.Cos(argz);
+            double img = r * Math.Sin(argz);
+
+            return new ComplexD(real, img);
         }
 
         public double GetDistance(List<Complex> listOfPoints)
