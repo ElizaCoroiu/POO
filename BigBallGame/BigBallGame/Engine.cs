@@ -62,6 +62,14 @@ namespace BigBallGame
                 balls.Add(Ball.RandomInit(b));
             }
         }
+
+        public static void DrawBalls()
+        {
+            foreach (Ball b in balls)
+            {
+                b.draw();
+            }
+        }
     }
 }
 

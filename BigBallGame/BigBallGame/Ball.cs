@@ -50,14 +50,20 @@ namespace BigBallGame
                     }
             }
         }
+
+        public abstract void draw();
     }
 
     public class RegularBall : Ball
     {
         public RegularBall(float radius, PointF position, Color color, Speed speed) :
-            base(radius, position, color, speed)
-        { }
+            base(radius, position, color, speed) { }
 
+        public override void draw()
+        {
+            Engine.grp.FillEllipse(new SolidBrush(color), position.X, position.Y, radius, radius);
+            Engine.grp.DrawEllipse(new Pen(Color.Black, 4), position.X, position.Y, radius, radius);
+        }
     }
 
     public class MonsterBall : Ball
@@ -68,13 +74,24 @@ namespace BigBallGame
             speed.dx = 0;
             speed.dy = 0;
         }
+
+        public override void draw()
+        {
+            Engine.grp.FillEllipse(new SolidBrush(color), position.X, position.Y, radius, radius);
+            Engine.grp.DrawEllipse(new Pen(Color.Red, 4), position.X, position.Y, radius, radius);
+        }
     }
 
     public class RepelantBall : Ball
     {
         public RepelantBall(float radius, PointF position, Color color, Speed speed) :
-            base(radius, position, color, speed)
-        { }
+            base(radius, position, color, speed) { }
+
+        public override void draw()
+        {
+            Engine.grp.FillEllipse(new SolidBrush(color), position.X, position.Y, radius, radius);
+            Engine.grp.DrawEllipse(new Pen(Color.Yellow, 4), position.X, position.Y, radius, radius);
+        }
     }
 }
 

@@ -21,6 +21,12 @@ namespace BigBallGame
         {
             Engine.InitGraph(pictureBox1);
             Engine.RandomInitBalls();
+            Engine.DrawBalls();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
