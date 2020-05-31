@@ -46,12 +46,32 @@ namespace BigBallGame
                     }
                 case BallType.Repelant:
                     {
-                        return new RepelantBall(radius, position, color, speed);
+                        return new RepelentBall(radius, position, color, speed);
                     }
             }
         }
 
         public abstract void draw();
+
+        public abstract void collide(Ball other);
+
+        public static void collideRegularAndMonster(RegularBall b1, MonsterBall b2)
+        {
+            b2.radius += b1.radius;
+            Engine.balls.Remove(b1);
+        }
+
+        public static void collideRegularAndRepelent(RegularBall b1, RepelentBall b2)
+        {
+            b2.color = b1.color;
+            b1.speed.dx *= (-1);
+            b1.speed.dy *= (-1);
+        }
+
+        public static void collideRepelentAndMonster(RepelentBall b1, MonsterBall b2)
+        {
+            b1.radius /= 2;
+        }
     }
 
     public class RegularBall : Ball
@@ -59,10 +79,46 @@ namespace BigBallGame
         public RegularBall(float radius, PointF position, Color color, Speed speed) :
             base(radius, position, color, speed) { }
 
+        public override void collide(Ball other)
+        {
+            switch (other)
+            {
+                case RepelentBall b:
+                    {
+                        collideRegularAndRepelent(this, b);
+                        break;
+                    }
+                case MonsterBall b:
+                    {
+                        collideRegularAndMonster(this, b);
+                        break;
+                    }
+                case RegularBall b:
+                    {
+                        int R = (this.color.R + b.color.R) / 2;
+                        int G = (this.color.G + b.color.G) / 2;
+                        int B = (this.color.B + b.color.B) / 2;
+                        if (this.radius > b.radius)
+                        {
+                            this.radius += b.radius;
+                            this.color = Color.FromArgb (R, G, B);
+                            Engine.balls.Remove(b);
+                        }
+                        else
+                        {
+                            b.radius += this.radius;
+                            b.color = Color.FromArgb(R, G, B);
+                            Engine.balls.Remove(this);
+                        }
+                        break;
+                    }
+            }
+        }
+
         public override void draw()
         {
             Engine.grp.FillEllipse(new SolidBrush(color), position.X, position.Y, radius, radius);
-            Engine.grp.DrawEllipse(new Pen(Color.Black, 4), position.X, position.Y, radius, radius);
+            Engine.grp.DrawEllipse(new Pen(Color.Black, 5), position.X, position.Y, radius, radius);
         }
     }
 
@@ -75,22 +131,67 @@ namespace BigBallGame
             speed.dy = 0;
         }
 
+        public override void collide(Ball other)
+        {
+            switch (other)
+            {
+                case RepelentBall b:
+                    {
+                        collideRepelentAndMonster(b, this);
+                        break;
+                    }
+                case MonsterBall b:
+                    {
+                        break;
+                    }
+                case RegularBall b:
+                    {
+                        collideRegularAndMonster(b, this);
+                        break;
+                    }
+            }
+        }
+
         public override void draw()
         {
             Engine.grp.FillEllipse(new SolidBrush(color), position.X, position.Y, radius, radius);
-            Engine.grp.DrawEllipse(new Pen(Color.Red, 4), position.X, position.Y, radius, radius);
+            Engine.grp.DrawEllipse(new Pen(Color.Red, 5), position.X, position.Y, radius, radius);
         }
     }
 
-    public class RepelantBall : Ball
+    public class RepelentBall : Ball
     {
-        public RepelantBall(float radius, PointF position, Color color, Speed speed) :
+        public RepelentBall(float radius, PointF position, Color color, Speed speed) :
             base(radius, position, color, speed) { }
+
+        public override void collide(Ball other)
+        {
+            switch (other)
+            {
+                case RepelentBall b:
+                    {
+                        Color aux = this.color;
+                        this.color = b.color;
+                        b.color = aux;
+                        break;
+                    }
+                case MonsterBall b:
+                    {
+                        collideRepelentAndMonster(this, b);
+                        break;
+                    }
+                case RegularBall b:
+                    {
+                        collideRegularAndRepelent(b, this);
+                        break;
+                    }
+            }
+        }
 
         public override void draw()
         {
             Engine.grp.FillEllipse(new SolidBrush(color), position.X, position.Y, radius, radius);
-            Engine.grp.DrawEllipse(new Pen(Color.Yellow, 4), position.X, position.Y, radius, radius);
+            Engine.grp.DrawEllipse(new Pen(Color.Yellow, 5), position.X, position.Y, radius, radius);
         }
     }
 }

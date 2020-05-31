@@ -28,5 +28,10 @@ namespace BigBallGame
         {
 
         }
+
+        private void btn_Start_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

@@ -13,7 +13,8 @@ namespace BigBallGame
     {
         public static Graphics grp;
         public static Bitmap bmp;
-        public static int resx, resy;
+        public static int width;
+        public static int height;
         public static Color backColor = Color.White;
         public static PictureBox display;
         public static Random rnd = new Random();
@@ -22,10 +23,10 @@ namespace BigBallGame
         public static void InitGraph(PictureBox T)
         {
             display = T;
-            resx = T.Width;
-            resy = T.Height;
+            width = T.Width;
+            height = T.Height;
 
-            bmp = new Bitmap(resx, resy);
+            bmp = new Bitmap(width, height);
             grp = Graphics.FromImage(bmp);
 
             ClearGraph();
@@ -46,7 +47,7 @@ namespace BigBallGame
         #region Random
         public static PointF GetRndPoint()
         {
-            return new PointF(rnd.Next(resx), rnd.Next(resy));
+            return new PointF(rnd.Next(width), rnd.Next(height));
         }
 
         public static Color GetRndColor()
@@ -56,7 +57,7 @@ namespace BigBallGame
         #endregion
         public static void RandomInitBalls()
         {
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 10; i++)
             {
                 BallType b = (BallType)rnd.Next(3);
                 balls.Add(Ball.RandomInit(b));
