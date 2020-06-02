@@ -45,9 +45,9 @@ namespace BigBallGame
         #endregion
 
         #region Random
-        public static PointF GetRndPoint()
+        public static PointF GetRndPoint(float r)
         {
-            return new PointF(rnd.Next(width), rnd.Next(height));
+            return new PointF(rnd.Next((int)r, (int)(width-r)), rnd.Next((int)r, (int)(height-r)));
         }
 
         public static Color GetRndColor()

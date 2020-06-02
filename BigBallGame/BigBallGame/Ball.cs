@@ -9,6 +9,7 @@ namespace BigBallGame
 {
     public abstract class Ball
     {
+        public double id;
         public float radius { get; set; }
         public PointF position { get; set; }
         public Color color { get; set; }
@@ -22,6 +23,7 @@ namespace BigBallGame
 
         public Ball(float radius, PointF position, Color color, Speed speed)
         {
+            this.id = rnd.NextDouble();
             this.radius = radius;
             this.position = position;
             this.color = color;
@@ -30,10 +32,10 @@ namespace BigBallGame
 
         public static Ball RandomInit(BallType t)
         {
-            float radius = (float)rnd.NextDouble() * 50;
-            PointF position = Engine.GetRndPoint();
+            float radius = (float)rnd.Next(10, 50);
+            PointF position = Engine.GetRndPoint(radius);
             Color color = Engine.GetRndColor();
-            Speed speed = new Speed(rnd.Next(100), rnd.Next(100));
+            Speed speed = new Speed(rnd.Next(1, 5), rnd.Next(1, 5));
             switch (t)
             {
                 default:
@@ -70,50 +72,23 @@ namespace BigBallGame
 
         public static void collideRepelentAndMonster(RepelentBall b1, MonsterBall b2)
         {
-            b1.radius /= 2;
+            float newRadius = b1.radius / 2;
+
+            b1.radius = Math.Max(1, newRadius);
         }
 
-        public void Reflect()
+        public bool collides (Ball otherBall)
         {
-            bool[] reflection = checkEdgeConditions();
-            bool reflectX = reflection[0];
-            bool reflectY = reflection[1];
-            if (reflectX)
+            float dx = this.position.X - otherBall.position.X;
+            float dy = this.position.Y - otherBall.position.Y;
+            double distance = Math.Sqrt(dx * dx + dy * dy);
+
+            if (distance < this.radius + otherBall.radius)
             {
-                this.speed.dx *= (-1);
+                return true;
             }
-            else if (reflectY)
-            {
-                this.speed.dy *= (-1);
-            }
-        }
-        
-        public bool[] checkEdgeConditions()
-        {
-            bool[] reflection = new bool[2];
-            bool reflectX = false;
-            bool reflectY = false;
-            if (this.position.X <= this.radius)
-            {
-                reflectX = true;
-                reflection[0] = reflectX;
-            }
-            else if (this.position.Y <= this.radius)
-            {
-                reflectY = true;
-                reflection[1] = reflectY;
-            }
-            else if (this.position.X + this.radius >= Engine.width)
-            {
-                reflectX = true;
-                reflection[0] = reflectX;
-            }
-            else if (this.position.Y + this.radius >= Engine.height)
-            {
-                reflectY = true;
-                reflection[1] = reflectY;
-            }
-            return reflection;
+
+            return false;
         }
     }
 
@@ -161,7 +136,7 @@ namespace BigBallGame
         public override void draw()
         {
             Engine.grp.FillEllipse(new SolidBrush(color), position.X, position.Y, radius, radius);
-            Engine.grp.DrawEllipse(new Pen(Color.Black, 5), position.X, position.Y, radius, radius);
+            Engine.grp.DrawEllipse(new Pen(Color.Black, 2), position.X, position.Y, radius, radius);
         }
     }
 
@@ -198,7 +173,7 @@ namespace BigBallGame
         public override void draw()
         {
             Engine.grp.FillEllipse(new SolidBrush(color), position.X, position.Y, radius, radius);
-            Engine.grp.DrawEllipse(new Pen(Color.Red, 5), position.X, position.Y, radius, radius);
+            Engine.grp.DrawEllipse(new Pen(Color.Red, 2), position.X, position.Y, radius, radius);
         }
     }
 
@@ -234,7 +209,7 @@ namespace BigBallGame
         public override void draw()
         {
             Engine.grp.FillEllipse(new SolidBrush(color), position.X, position.Y, radius, radius);
-            Engine.grp.DrawEllipse(new Pen(Color.Yellow, 5), position.X, position.Y, radius, radius);
+            Engine.grp.DrawEllipse(new Pen(Color.DarkGreen, 2), position.X, position.Y, radius, radius);
         }
     }
 }
