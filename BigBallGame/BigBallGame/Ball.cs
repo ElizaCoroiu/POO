@@ -72,6 +72,49 @@ namespace BigBallGame
         {
             b1.radius /= 2;
         }
+
+        public void Reflect()
+        {
+            bool[] reflection = checkEdgeConditions();
+            bool reflectX = reflection[0];
+            bool reflectY = reflection[1];
+            if (reflectX)
+            {
+                this.speed.dx *= (-1);
+            }
+            else if (reflectY)
+            {
+                this.speed.dy *= (-1);
+            }
+        }
+        
+        public bool[] checkEdgeConditions()
+        {
+            bool[] reflection = new bool[2];
+            bool reflectX = false;
+            bool reflectY = false;
+            if (this.position.X <= this.radius)
+            {
+                reflectX = true;
+                reflection[0] = reflectX;
+            }
+            else if (this.position.Y <= this.radius)
+            {
+                reflectY = true;
+                reflection[1] = reflectY;
+            }
+            else if (this.position.X + this.radius >= Engine.width)
+            {
+                reflectX = true;
+                reflection[0] = reflectX;
+            }
+            else if (this.position.Y + this.radius >= Engine.height)
+            {
+                reflectY = true;
+                reflection[1] = reflectY;
+            }
+            return reflection;
+        }
     }
 
     public class RegularBall : Ball

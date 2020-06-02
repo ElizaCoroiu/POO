@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btn_Start = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btn_Turn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,17 +60,11 @@
     "low border";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // btn_Start
             // 
             this.btn_Start.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Start.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Start.Location = new System.Drawing.Point(1260, 345);
+            this.btn_Start.Location = new System.Drawing.Point(1259, 86);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(146, 70);
             this.btn_Start.TabIndex = 2;
@@ -77,11 +72,28 @@
             this.btn_Start.UseVisualStyleBackColor = true;
             this.btn_Start.Click += new System.EventHandler(this.btn_Start_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btn_Turn
+            // 
+            this.btn_Turn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Turn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Turn.Location = new System.Drawing.Point(1259, 185);
+            this.btn_Turn.Name = "btn_Turn";
+            this.btn_Turn.Size = new System.Drawing.Size(146, 70);
+            this.btn_Turn.TabIndex = 3;
+            this.btn_Turn.Text = "Turn";
+            this.btn_Turn.UseVisualStyleBackColor = true;
+            this.btn_Turn.Click += new System.EventHandler(this.btn_Turn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1496, 763);
+            this.Controls.Add(this.btn_Turn);
             this.Controls.Add(this.btn_Start);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pictureBox1);
@@ -98,8 +110,9 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btn_Start;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btn_Turn;
     }
 }
 

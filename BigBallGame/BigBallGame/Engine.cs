@@ -55,13 +55,14 @@ namespace BigBallGame
             return Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
         }
         #endregion
-        public static void RandomInitBalls()
+        public static List<Ball> RandomInitBalls()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 8; i++)
             {
                 BallType b = (BallType)rnd.Next(3);
                 balls.Add(Ball.RandomInit(b));
             }
+            return balls;
         }
 
         public static void DrawBalls()
