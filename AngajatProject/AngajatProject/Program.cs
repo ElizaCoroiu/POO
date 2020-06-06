@@ -27,8 +27,10 @@ namespace AngajatProject
             StreamWriter dataOutput = new StreamWriter(filepath);
             foreach (Angajat employee in staff.list)
             {
+                int seniority = (DateTime.Now.Year - employee.Date.Year) * 12 + (DateTime.Now.Month - employee.Date.Month);
                 dataOutput.WriteLine($"{employee.LastName} {employee.FirstName} " +
-                    $"{employee.Date.Year} {employee.Date.Month}");
+                    $"{seniority / 12} years and " +
+                    $"{seniority % 12} months");
             }
             dataOutput.Close();
         }

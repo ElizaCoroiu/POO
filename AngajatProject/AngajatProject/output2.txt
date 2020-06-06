@@ -1,8 +1,8 @@
-Popescu Maria 1999 1
-Constantinescu George 2000 1
-Dumitrescu Ecaterina 2000 5
-Rusu Gheorghe 2001 8
-Preda Eleonora 2002 9
-Cristea Ilie 2005 4
-Stanciu Claudia 2009 3
-Toma Alberta 2015 12
+Popescu Maria 21 years and 5 months
+Constantinescu George 20 years and 5 months
+Dumitrescu Ecaterina 20 years and 1 months
+Rusu Gheorghe 18 years and 10 months
+Preda Eleonora 17 years and 9 months
+Cristea Ilie 15 years and 2 months
+Stanciu Claudia 11 years and 3 months
+Toma Alberta 4 years and 6 months
